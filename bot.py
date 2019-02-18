@@ -56,5 +56,5 @@ def create_schedule():
 	scheduler.start()
 
 sendtimestamp = ''
-fetch_and_decode_metar() #for initial starting
+fetch_and_decode_metar(code) #for initial starting
 create_schedule()
