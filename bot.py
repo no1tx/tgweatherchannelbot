@@ -10,6 +10,7 @@ import telebot
 bot = telebot.TeleBot(config.token)
 code = config.code
 channel = config.channel
+sendtimestamp = ''
 
 def fetch_and_decode_metar(code):
 	global decoded_data
@@ -55,6 +56,5 @@ def create_schedule():
 	scheduler.add_job(send, 'interval', hours=1)
 	scheduler.start()
 
-sendtimestamp = ''
 fetch_and_decode_metar(code) #for initial starting
 create_schedule()
