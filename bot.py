@@ -10,7 +10,7 @@ import telebot
 bot = telebot.TeleBot(config.token)
 code = config.code
 channel = config.channel
-sendtimestamp = ''
+global sendtimestamp = ''
 
 def fetch_and_decode_metar(code):
 	global decoded_data
