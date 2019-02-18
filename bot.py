@@ -26,7 +26,7 @@ def fetch_and_decode_metar(code):
 	decoded_data = Metar(metar_data)
 
 def send():
-	if timestamp != send:
+	if timestamp != sendtimestamp:
 		bot.send_message(chat_id=channel, text=message)
 		sendtimestamp = timestamp
 	else:
