@@ -10,7 +10,7 @@ import telebot
 bot = telebot.TeleBot(config.token)
 code = config.code
 channel = config.channel
-global sendtimestamp = ''
+global sendtimestamp
 
 def fetch_and_decode_metar(code):
 	global decoded_data
@@ -27,6 +27,7 @@ def fetch_and_decode_metar(code):
 	decoded_data = Metar(metar_data)
 
 def send():
+	global sendtimestamp
 	if timestamp != sendtimestamp:
 		bot.send_message(chat_id=channel, text=message)
 		sendtimestamp = timestamp
@@ -56,5 +57,8 @@ def create_schedule():
 	scheduler.add_job(send, 'interval', hours=1)
 	scheduler.start()
 
+sendtimestamp = ''
 fetch_and_decode_metar(code) #for initial starting
+create_message()
+send()
 create_schedule()
